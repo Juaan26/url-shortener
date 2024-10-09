@@ -1,0 +1,17 @@
+
+.header{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    background-color: rgb(39, 37, 37);
+    top: 0px;
+    width: 100%;
+    left: 0;
+    position: fixed;
+    padding-left: 10px;
+    height: 90px;
+}
+.header-p{
+ font-size: large;
+ color: white;
+}
