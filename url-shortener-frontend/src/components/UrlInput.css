@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'insaniburger';
+    src: URL('/public/Insanibu.ttf') format('truetype');
+  }
+
+
+.url-container{
+    font-family: insaniburger;
+    text-align: center;
+    text-shadow: #000000;
+    margin-top: 8rem;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: 100%;
+}
+.url-subcontainer{
+    color: white;
+    padding: 50px;
+    background: #000000;
+    border-radius: 25px;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    
+}
+.url-inputs{
+    width: auto;
+    padding: 20px;
+}
+.input-text{
+    border: none;
+    border-start-end-radius:0px;
+    border-end-end-radius: 0px;
+    border-start-start-radius:25px;
+    border-end-start-radius: 25px;
+    padding: 2rem;
+    padding-left:12rem ;
+}
+.btn-submit{
+    font-family: insaniburger;
+    background: #04ffde;
+    padding: 1rem;
+    padding-top: 0.9rem;
+    padding-bottom: 2rem;
+    border: none;
+    border-start-end-radius:25px;
+    border-end-end-radius: 25px;
+}
+.btn-submit:hover{
+    background: #82f5e5;
+    cursor: pointer;
+    padding-bottom: 2.1rem;
+}
+.btn-submit img {
+    color: white;
+}
