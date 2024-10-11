@@ -43,6 +43,7 @@
     border-start-start-radius:25px;
     border-end-start-radius: 25px;
     font-size: xx-large;
+    padding-left: 2rem;
 }
 .btn-submit{
     font-family: insaniburger;

@@ -9,7 +9,7 @@ export function UrlInput() {
             <StarField/> 
                 <h2 className='url-subcontainer-h2'> PEGA LA URL QUE QUIERAS ACORTAR</h2>
                 <div className='url-inputs'>
-                    <input type="text" name="" id="" className='input-text' />
+                    <input type="text" name="" id="" className='input-text'placeholder='  Introduce el enlace' />
                     <a href="#">
                     <button type="submit" className='btn-submit'><img className="url-svg" src="/rockets2.svg"  alt="" /></button>
                     </a>
