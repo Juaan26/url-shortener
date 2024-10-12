@@ -1,27 +1,50 @@
 <?php
-define('DB_HOST','localhost:3306');
-define('DB_USER','root');
-define('DB_PASSWORD','');
-define('DB_NAME','url_shortener');
+/**
+ * Manejo de la Base de Datos de MySQL
+ */
 
-$hostDB = "mysql:host".DB_HOST.";dbname=".DB_NAME.";";
+class Database
+{
+    // Datos de la conexión
+    private $host = 'localhost:3306';
+    private $user = 'root';
+    private $pass = '';
+    private $dbname = 'url_shortener';
 
+    // Atributos
+    private static $instancia = null;
+    private $db = null;
 
-    try{
-        $connectDB = new PDO($hostDB,DB_USER,DB_PASSWORD);
-        $connectDB->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    private function __construct()
+    {
+        $options = [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ];
 
-    }catch(PDOException $e){
-        die("No se pudo conectar con la base de datos".$e->getMessage());
+        try {
+            $this->db = new PDO(
+                'mysql:host=' . $this->host . ';dbname=' . $this->dbname,
+                $this->user,
+                $this->pass,
+                $options
+            );
+        } catch (PDOException $error) {
+            exit('No se pudo conectar con la base de datos: ' . $error->getMessage());
+        }
     }
 
+    public static function getInstance()
+    {
+        if (is_null(self::$instancia)) {
+            self::$instancia = new Database();
+        }
 
+        return self::$instancia;
+    }
 
-
-
-
-
-
-
-
-?>
+    public function getConnection()
+    {
+        return $this->db;
+    }
+}
