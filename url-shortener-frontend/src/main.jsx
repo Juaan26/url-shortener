@@ -4,6 +4,7 @@ import { Header } from './components/Header.jsx';
 import { UrlInput } from './components/UrlInput.jsx';
 import { ShortenedUrlPage } from './ShortenedUrlPage.jsx'; // Moveremos a "pages"
 import './main.css';
+import { RedirectToUrl } from './RedirectToUrl.jsx';
 
 createRoot(document.getElementById('root')).render(
   <Router>
@@ -11,6 +12,7 @@ createRoot(document.getElementById('root')).render(
     <Routes>
       <Route path="/" element={<UrlInput />} />
       <Route path="/shortened-url/:url" element={<ShortenedUrlPage />} />
+      <Route path="/redirect/:url" element={<RedirectToUrl />} />
     </Routes>
   </Router>
 );

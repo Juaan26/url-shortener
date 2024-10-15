@@ -19,7 +19,7 @@ export function UrlInput() {
       const result = response.data;
       console.log('Respuesta del backend:', result); // Verifica la respuesta del backend
       if (result.shortened_url) {
-        const code = result.shortened_url.split('/').pop();
+        const code = result.shortened_url
         navigate(`/shortened-url/${code}`);
       }
     } catch (error) {

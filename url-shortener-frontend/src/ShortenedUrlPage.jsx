@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 export function ShortenedUrlPage() {
   const { url } = useParams();
-  const fullUrl = `http://localhost/url-shortener/${url}`;
+  const fullUrl = `http://localhost/redirect/${url}`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(fullUrl).then(() => {
