@@ -12,14 +12,15 @@ export function UrlInput() {
     event.preventDefault();
     console.log('URL enviada:', inputUrl); // Verifica si este mensaje aparece en la consola
     try {
-      const response = await axios.post('http://localhost/url-shortener/urlshortener-api/shorten', 
+      const response = await axios.post('http://localhost/url-shortener/urlshortener-api/shorten',
         { url: inputUrl },
         { headers: { 'Content-Type': 'application/json' } }
       );
       const result = response.data;
       console.log('Respuesta del backend:', result); // Verifica la respuesta del backend
       if (result.shortened_url) {
-        navigate(`/shortened-url/${result.shortened_url}`);
+        const code = result.shortened_url.split('/').pop();
+        navigate(`/shortened-url/${code}`);
       }
     } catch (error) {
       console.error('Error al acortar la URL:', error);
