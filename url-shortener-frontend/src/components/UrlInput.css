@@ -1,10 +1,9 @@
 @font-face {
     font-family: 'insaniburger';
     src: URL('/public/Insanibu.ttf') format('truetype');
-  }
+}
 
-
-.url-container{
+.url-container {
     font-family: insaniburger;
     text-align: center;
     text-shadow: #000000;
@@ -13,7 +12,8 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
     width: 100%;
 }
-.url-subcontainer{
+
+.url-subcontainer {
     z-index: 1;
     color: white;
     padding: 50px;
@@ -24,44 +24,79 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    
 }
-.url-subcontainer-h2{
+
+.url-subcontainer-h2 {
     font-size: 30px;
 }
-.url-inputs{
+
+.url-inputs {
     z-index: 1;
     width: auto;
     padding: 20px;
     display: flex;
     justify-content: center;
 }
-.input-text{
+
+.input-text {
     border: none;
-    border-start-end-radius:0px;
+    border-start-end-radius: 0px;
     border-end-end-radius: 0px;
-    border-start-start-radius:25px;
+    border-start-start-radius: 25px;
     border-end-start-radius: 25px;
     font-size: xx-large;
     padding-left: 2rem;
+    width: 80%; /* Ajusta según sea necesario */
+    max-width: 700px; /* Limita el ancho máximo */
+    box-sizing: border-box;
 }
-.btn-submit{
+
+.btn-submit {
     font-family: insaniburger;
     background: #9613ee;
     border: none;
     border-start-end-radius: 25px;
     border-end-end-radius: 25px;
-    box-shadow: inset 0 0 20px #b19cd9; 
+    box-shadow: inset 0 0 20px #b19cd9;
+    
 }
-.url-svg{
+
+.url-svg {
     margin: 2px;
     padding-right: 10px;
     height: 100px;
     width: 100px;
 }
-.btn-submit:hover{
+
+.btn-submit:hover {
     background: #9613ee;
     cursor: pointer;
-    box-shadow: inset 0 0 40px #a69bb9; 
-    transition: all 0.5s ease
+    box-shadow: inset 0 0 40px #a69bb9;
+    transition: all 0.5s ease;
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    .url-container {
+        margin-top: 6rem;
+        grid-template-columns: 1fr;
+    }
+
+    .url-subcontainer {
+        grid-column-start: 1;
+        grid-column-end: 1;
+    }
+
+    .input-text {
+        font-size: large;
+        width: 80%; /* Asegura que se ajuste al contenedor */
+        max-width: none; /* Sin límite de ancho en pantallas pequeñas */
+    }
+
+
+
+    .url-svg {
+        height: 50px;
+        width: 50px;
+    }
 }
