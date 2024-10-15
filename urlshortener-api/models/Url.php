@@ -4,9 +4,9 @@ class Url
 {
     private $db;
 
-    public function __construct($db)
+    public function __construct()
     {
-        $this->db = $db;
+        $this->db = Database::getInstance()->getConnection();
     }
 
     public function createUrl($userId, $inputUrl, $shortenedUrl)
@@ -30,8 +30,4 @@ class Url
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function shortenUrl($inputUrl)
-    {
-        return "localhost/url-shortener/urlshortener-api". substr(md5($inputUrl . time()), 0, 6); // Crear una URL acortada
-    }
 }

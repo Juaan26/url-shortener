@@ -6,8 +6,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
 $routesArray = explode("/", $_SERVER['REQUEST_URI']);
 
-require_once "models/Url.php";
-require_once "Database.php";
+require_once "controllers/UrlsController.php";
 
 if (count(array_filter($routesArray)) == 2) {
     $json = array(
@@ -25,8 +24,7 @@ if (count(array_filter($routesArray)) == 2) {
         // Verificar los datos recibidos
         error_log('Datos recibidos: ' . print_r($data, true));
 
-        $db = Database::getInstance()->getConnection();
-        $urlModel = new Url($db);
+        $urlC = new UrlsController();
         
         $inputUrl = $data['url'] ?? null;
         $userId = $data['user_id'] ?? null;  // Asumiendo que user_id es opcional
@@ -34,8 +32,8 @@ if (count(array_filter($routesArray)) == 2) {
         error_log('User ID: ' . $userId); // Verificación adicional
 
         if ($inputUrl) {
-            $shortenedUrl = $urlModel->shortenUrl($inputUrl);
-            if ($urlModel->createUrl($userId, $inputUrl, $shortenedUrl)) {
+            $shortenedUrl = $urlC->shortenUrl($userId,$inputUrl);
+            if ($shortenedUrl) {
                 $json = array(
                     "shortened_url" => $shortenedUrl
                 );

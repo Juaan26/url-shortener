@@ -11,7 +11,7 @@ class UrlsController extends Controller
 
     public function shortenUrl($userId, $inputUrl)
     {
-        $shortenedUrl = substr(md5($inputUrl . time()), 0, 6);
+        $shortenedUrl = "http://localhost:5173/ShortenedUrlPage/". substr(md5($inputUrl . time()), 0, 6); // Crear una URL acortada
 
         if ($this->model->createUrl($userId, $inputUrl, $shortenedUrl)) {
             return $shortenedUrl; // Devuelve la URL acortada
@@ -19,5 +19,6 @@ class UrlsController extends Controller
             return false; // Algo falló
         }
     }
+
 }
 
