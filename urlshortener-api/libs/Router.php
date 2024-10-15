@@ -50,5 +50,37 @@ if (count(array_filter($routesArray)) == 2) {
         echo json_encode($json, true);
         return;
     } 
+
+    if ($ruta == "redirect" && $_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Obtener los datos del cuerpo de la solicitud
+        $data = json_decode(file_get_contents('php://input'), true);
+        
+        // Verificar los datos recibidos
+        error_log('Datos recibidos: ' . print_r($data, true));
+
+        $urlC = new UrlsController();
+        
+        $shortenedUrl = $data['url'] ?? null;
+        error_log('URL: ' . $shortenedUrl); // Verificación adicional
+
+        if ($shortenedUrl) {
+            $url = $urlC->redirection($shortenedUrl);
+            if ($url) {
+                $json = array(
+                    "input_url" => $url
+                );
+            } else {
+                $json = array(
+                    "error" => "No se pudo crear la URL acortada"
+                );
+            }
+        } else {
+            $json = array(
+                "error" => "URL no proporcionada"
+            );
+        }
+        echo json_encode($json, true);
+        return;
+    } 
     
 }

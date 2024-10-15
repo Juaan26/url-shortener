@@ -23,7 +23,7 @@ class Url
 
     public function getUrl($shortenedUrl)
     {
-        $sql = "SELECT * FROM urls WHERE shortened_url = :shortened_url";
+        $sql = "SELECT input_url FROM urls WHERE shortened_url = :shortened_url";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':shortened_url', $shortenedUrl, PDO::PARAM_STR);
         $stmt->execute();

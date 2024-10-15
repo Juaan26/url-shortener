@@ -20,5 +20,18 @@ class UrlsController extends Controller
         }
     }
 
+    public function redirection($shortenedUrl)
+    {
+        $url =$this->model->getUrl($shortenedUrl);
+        if($url)
+        {
+            return $url;
+        }
+        else{
+            return false;
+        }
+
+    }
+
 }
 
