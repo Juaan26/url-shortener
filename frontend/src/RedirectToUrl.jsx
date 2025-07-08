@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export default function RedirectToUrl() {
     const { url } = useParams();
-    console.log(url);
+    // console.log(url);
 
     useEffect(() => {
         const redirect = async () => {
