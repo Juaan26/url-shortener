@@ -12,15 +12,25 @@ export default function App() {
     const navigate = useNavigate();
 
     const isValidUrl = (url) => {
-        const pattern = new RegExp(
-            '^(https?:\\/\\/)?' + // protocolo
-            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // dominio
-            '((\\d{1,3}\\.){3}\\d{1,3}))' + // o dirección IP (v4)
-            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // puerto y ruta
-            '(\\?[;&a-z\\d%_.~+=-]*)?' + // cadena de consulta
-            '(\\#[-a-z\\d_]*)?$', 'i' // fragmento
-        );
-        return !!pattern.test(url);
+        if (!url || url.trim() === '') {
+
+            return false;
+
+        } try {
+
+            const urlToTest = url.startsWith('http://') || url.startsWith('https://')
+                ? url
+                : `https://${url}`;
+
+            const urlObj = new URL(urlToTest);
+            console.log(urlObj);
+
+            return urlObj.hostname.includes('.');
+
+        } catch {
+
+            return false
+        }
     };
 
     const handleSubmit = async (event) => {
